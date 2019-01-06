@@ -14,19 +14,19 @@ calibrate = getSum
           . lines
 
 buildSequence :: String -> [Integer]
-buildSequence = (scanl (+) 0)
+buildSequence = scanl (+) 0
            . join
            . repeat
-           . (fmap toNum)
+           . fmap toNum
            . lines
 
 findRep :: String -> Maybe Integer
 findRep xs = go (buildSequence xs) (Set.fromList [])
     where
-        go :: [Integer] -> Set.Set (Integer) -> Maybe Integer
+        go :: [Integer] -> Set.Set Integer -> Maybe Integer
         go [] _     = Nothing
         go (x:xs) s = if x `Set.member` s 
-                         then (Just x) 
+                         then Just x 
                          else go xs (Set.insert x s)
 
 solvePart1 :: FilePath -> IO Integer
