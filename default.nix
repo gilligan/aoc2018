@@ -14,8 +14,7 @@ in
   {
     aoc = drv;
     aoc-shell = haskellPackages.shellFor {
-      withHoogle = true;
       packages = p: [drv];
-      buildInputs = with pkgs; [ cabal-install aoc-ghcid hlint ];
+      buildInputs = with pkgs; [ cabal-install aoc-ghcid hlint haskellPackages.hindent ];
     };
   }
