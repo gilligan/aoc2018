@@ -1,4 +1,4 @@
-{ compiler ? "ghc863", pkgs ? import <nixpkgs> {} }:
+{ compiler ? "ghc844", pkgs ? import <nixpkgs> {} }:
 
 let
 
@@ -15,6 +15,6 @@ in
     aoc = drv;
     aoc-shell = haskellPackages.shellFor {
       packages = p: [drv];
-      buildInputs = with pkgs; [ cabal-install aoc-ghcid hlint haskellPackages.hindent ];
+      buildInputs = with pkgs; [ cabal-install aoc-ghcid hlint ];
     };
   }
